@@ -24,7 +24,7 @@ import static org.apache.parquet.schema.MessageTypeParser.parseMessageType;
 import static org.apache.parquet.schema.OriginalType.UTF8;
 import static org.apache.parquet.schema.PrimitiveType.PrimitiveTypeName.BINARY;
 
-public class ParquetWriteReadTest {
+public class ParquetReadWriteTest {
 
   @Rule
   public final TemporaryFolder tempDir = new TemporaryFolder();
@@ -133,6 +133,8 @@ public class ParquetWriteReadTest {
               MessageType fileSchema,
               ReadContext readContext) {
             return new RecordMaterializer<Car>() {
+              // only converts a record at a time, it should convert a record batch
+              // in order to implement vectorization
               CarGroupConverter converter = new CarGroupConverter();
 
               @Override
