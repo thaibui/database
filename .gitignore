@@ -1,6 +1,21 @@
 # Compiled class file
 *.class
 
+# IDE related 
+.classpath
+.factorypath
+.settings
+.vscode
+
+# Java compile target
+target
+
+# Parquet related file
+*.crc
+
+# Profile file
+.project
+
 # Log file
 *.log
 
